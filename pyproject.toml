@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "information-retrieval-bd2"
+version = "0.1.0"
+description = "Information retrieval system using inverted index, made for BD2"
+authors = ["Enrique <enrique.flores@utec.edu.pe>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "<3.13,>=3.9"
+spotipy = "^2.23.0"
+pytube = "^15.0.0"
+librosa = "^0.10.1"
+psycopg2 = "^2.9.9"
+fastapi = "^0.104.1"
+uvicorn = "^0.24.0.post1"
+nltk = "^3.8.1"
+python-dotenv = "^1.0.0"
+speechrecognition = "^3.10.0"
+pyaudio = "^0.2.14"
+pandas = "^2.1.3"
+seaborn = "^0.13.0"
+
+[tool.poetry.group.dev.dependencies]
+pip = "^23.3.1"
+install = "^1.3.5"
+python-lsp-server = {extras = ["all"], version = "^1.9.0"}
+memory-profiler = "^0.61.0"
+poethepoet = "^0.24.3"
+pylsp-mypy = "^0.6.7"
+python-language-server = "^0.36.2"
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+start = "uvicorn src.main:app --reload"
+clean = "bash scripts/clean.sh"
